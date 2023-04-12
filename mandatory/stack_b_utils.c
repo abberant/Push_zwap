@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 15:39:01 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/09 17:22:17 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:09:11 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	get_costs(t_ps *ps)
 		crt_b->cost_mva = crt_b->target_pos;
 		if ((size_t)crt_b->target_pos > ps->sizeof_a / 2)
 			crt_b->cost_mva = (ps->sizeof_a - crt_b->target_pos) * -1;
-		// dprintf(2, "CMVA is {%d}, CMVB is {%d}\n", abs(crt_b->cost_mva), abs(crt_b->cost_mvb));
 		crt_b = crt_b->next;
 	}
 }
@@ -103,20 +102,14 @@ void	make_moves(t_ps *ps)
 	c = ps->stack_b;
 	while (c)
 	{
-		// dprintf(2, "CMVA is {%d}, CMVB is {%d}\n", abs(c->cost_mva), abs(c->cost_mvb));
 		if (abs(c->cost_mva) + abs(c->cost_mvb) < abs(least))
 		{
-			// dprintf(2, "Cost is : [%d]\n", abs(c->cost_mva) + abs(c->cost_mvb));
 			least = abs(c->cost_mvb) + abs(c->cost_mva);
 			ret.cost_stack_a = c->cost_mva;
-			// dprintf(2, "cost_stack_a is [%d]\n", ret.cost_stack_a);
 			ret.cost_stack_b = c->cost_mvb;
-			// dprintf(2, "cost_stack_b is [%d]\n", ret.cost_stack_b);
 		}
 		c = c->next;
 	}
-	// dprintf(2, "cost_stack_a is [%d]\n", ret.cost_stack_a);
-	// dprintf(2, "cost_stack_b is [%d]\n", ret.cost_stack_b);
 	ret.ps = ps;
 	execute_moves(ret);
 }

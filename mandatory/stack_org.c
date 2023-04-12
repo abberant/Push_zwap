@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:08:25 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/08 17:58:26 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:09:42 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	clear_stack(t_stack **nstack)
 		next = next->next;
 		free(current);
 		current = next;
-
 	}
 	*nstack = NULL;
 	return (1);
@@ -89,9 +88,6 @@ void	addback_stack(t_stack **nstack, t_stack *s_new)
 		return ;
 	}
 	while (current->next)
-	{
 		current = current->next;
-
-	}
 	current->next = s_new;
 }

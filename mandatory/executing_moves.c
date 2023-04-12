@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:45:36 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/09 18:17:21 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:04:06 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	loop_rotate_a(t_ps *ps, int *cost_stack_a)
 	{
 		if (*(cost_stack_a) > 0)
 			*(cost_stack_a) -= rotate_a(ps, 1);
-
 		else if (*(cost_stack_a) < 0)
 			*(cost_stack_a) += reverse_rotate_a(ps, 1);
 	}
@@ -71,9 +70,6 @@ void	execute_moves(t_fm ret)
 			(ret.cost_stack_b)--;
 		}
 	}
-	// dprintf(2, "MOVE\n");
-	// dprintf(2, "cost_stack_a is [%d]\n", ret.cost_stack_a);
-	// dprintf(2, "cost_stack_b is [%d]\n", ret.cost_stack_b);
 	loop_rotate_a(ret.ps, &ret.cost_stack_a);
 	loop_rotate_b(ret.ps, &ret.cost_stack_b);
 	push_a(ret.ps, 1);
@@ -81,7 +77,7 @@ void	execute_moves(t_fm ret)
 
 void	rotate_stack(t_ps *ps, t_stack *stack, size_t size)
 {
-	int	least_pos; 
+	int	least_pos;
 
 	set_position(stack);
 	least_pos = stack->position;

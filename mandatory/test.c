@@ -6,17 +6,33 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:07:10 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/09 21:03:26 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:10:00 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	free_stack(t_ps *ps)
+{
+	t_stack	*current;
+	t_stack	*tmp;
+
+	if (!ps->stack_a)
+		return ;
+	current = ps->stack_a;
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
+	ps->stack_a = NULL;
+}
+
 int	main(int argc, char **argv)
 {
-	size_t		i;
+	size_t	i;
 	t_ps	init;
-	// t_stack	*tmp;
 
 	i = 0;
 	init.args_num = 0;
@@ -26,27 +42,8 @@ int	main(int argc, char **argv)
 		fill_args(&init, argc, argv);
 	if (!initialize_stacks(&init))
 		return (0);
-	if (sorted_stack(init.stack_a))
-		ft_kill("Stack is sorted !");
 	setting_ranks(&init, init.sizeof_a);
 	push_swap(&init);
-	while (i < init.sizeof_a || i < init.sizeof_b)
-	{
-		if (!init.stack_a)
-			dprintf(2, "Empty,				");
-		else
-		{
-			dprintf(2, "Content of stack_a[%zu] is : [%d],	", i, init.stack_a->content);
-			init.stack_a = init.stack_a->next;
-		}
-		if (!init.stack_b)
-			dprintf(2, "Empty\n");
-		else
-		{
-			dprintf(2, "Content of stack_b[%zu] is : [%d]\n", i, init.stack_b->content);
-			init.stack_b = init.stack_b->next;
-		}
-		i++;
-	}
+	free_stack(&init);
 	return (0);
 }

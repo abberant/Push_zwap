@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 12:43:51 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/09 18:09:46 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:12:02 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	duplicate_args(int argc, char **argv)
 	int	j;
 	int	found;
 
-	found = 1;
+	found = 0;
 	tab = (int *)malloc((argc) * sizeof(int));
 	if (!tab)
 		return (1);
@@ -52,10 +52,10 @@ int	duplicate_args(int argc, char **argv)
 		j = i;
 		while (++j < argc && found)
 			if (tab[i] == tab[j])
-				found = 0;
+				found = 1;
 	}
 	free(tab);
-	return (!found);
+	return (found);
 }
 
 void	setting_ranks(t_ps *ps, size_t size)
@@ -64,7 +64,7 @@ void	setting_ranks(t_ps *ps, size_t size)
 	t_stack	*highest;
 	int		stocked;
 
-	while (size > 0)
+	while (--size > 0)
 	{
 		highest = NULL;
 		stocked = INT_MIN;
@@ -81,11 +81,9 @@ void	setting_ranks(t_ps *ps, size_t size)
 			}
 			else
 				current = current->next;
-
 		}
 		if (highest)
 			highest->final_rank = size;
-		size--;
 	}
 }
 

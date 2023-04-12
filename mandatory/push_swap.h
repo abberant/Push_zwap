@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:07:38 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/09 18:37:43 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:08:29 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include <math.h>
 # include <unistd.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # define DEFAULT 0
 
-typedef struct		s_stack
+typedef struct s_stack
 {
 	int				content;
 	int				position;
@@ -33,13 +33,13 @@ typedef struct		s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-typedef struct	s_track
+typedef struct s_track
 {
 	t_stack		*head;
 	t_stack		*current;
 }				t_track;
 
-typedef struct	s_ps
+typedef struct s_ps
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -50,7 +50,7 @@ typedef struct	s_ps
 	char	**n_argv;
 }	t_ps;
 
-typedef struct	s_fm
+typedef struct s_fm
 {
 	t_ps	*ps;
 	int		cost_stack_a;
@@ -83,21 +83,21 @@ void	setting_ranks(t_ps *ps, size_t size);
 
 /*----> STACK INITIALIZATION <----*/
 
-int	initialize_stacks(t_ps *ps);
+int		initialize_stacks(t_ps *ps);
 
 /*----> PUSH SWAP OPERATIONS <----*/
 
-int	swap_a(t_ps *ps, int index);
-int	swap_b(t_ps *ps, int index);
-int	swap_ab(t_ps *ps, int index);
-int	push_a(t_ps *ps, int index);
-int	push_b(t_ps *ps, int index);
-int	rotate_a(t_ps *ps, int index);
-int	rotate_b(t_ps *ps, int index);
-int	rotate_ab(t_ps *ps, int index);
-int	reverse_rotate_a(t_ps *ps, int index);
-int	reverse_rotate_b(t_ps *ps, int index);
-int	reverse_rotate_ab(t_ps *ps, int index);
+int		swap_a(t_ps *ps, int index);
+int		swap_b(t_ps *ps, int index);
+int		swap_ab(t_ps *ps, int index);
+int		push_a(t_ps *ps, int index);
+int		push_b(t_ps *ps, int index);
+int		rotate_a(t_ps *ps, int index);
+int		rotate_b(t_ps *ps, int index);
+int		rotate_ab(t_ps *ps, int index);
+int		reverse_rotate_a(t_ps *ps, int index);
+int		reverse_rotate_b(t_ps *ps, int index);
+int		reverse_rotate_ab(t_ps *ps, int index);
 
 /*----> ALGORITHM <----*/
 
@@ -110,11 +110,8 @@ void	set_target_position(t_ps *ps);
 int		get_target(t_ps *ps, int b_rank, int near_rank, int t_pos);
 void	get_costs(t_ps *ps);
 void	make_moves(t_ps *ps);
-void	loop_rotate_a(t_ps *ps, int *cost_stack_a);
-void	loop_rotate_b(t_ps *ps, int *cost_stack_b);
 void	get_lp_by_ranking(t_stack *stack, int *lp);
 void	rotate_stack(t_ps *ps, t_stack *stack, size_t size);
 void	execute_moves(t_fm ret);
-
 
 #endif

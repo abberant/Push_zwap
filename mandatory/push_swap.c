@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 21:26:11 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/09 18:37:56 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:07:05 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,21 @@ void	sort_three(t_ps *ps)
 
 void	push_to_b(t_ps *ps, size_t size)
 {
-	int	i;
 	size_t	pushed2b;
+	int		i;
 
 	i = 0;
 	pushed2b = 0;
 	while (size > 6 && (size_t)i < size && pushed2b < size / 2)
 	{
 		if ((size_t)ps->stack_a->final_rank <= size / 2)
-			pushed2b += push_b(ps , 1);
+			pushed2b += push_b(ps, 1);
 		else
 			rotate_a(ps, 1);
 		i++;
 	}
 	while (size - pushed2b > 3)
 		pushed2b += push_b(ps, 1);
-	// dprintf(2, "NEXT\n");
 }
 
 void	get_lp_by_ranking(t_stack *stack, int *lp)
