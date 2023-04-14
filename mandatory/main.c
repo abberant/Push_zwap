@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:07:10 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/12 00:10:00 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:32:53 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 	if (!init.args_num)
 		fill_args(&init, argc, argv);
 	if (!initialize_stacks(&init))
+		return (0);
+	if (sorted_stack(init.stack_a))
 		return (0);
 	setting_ranks(&init, init.sizeof_a);
 	push_swap(&init);

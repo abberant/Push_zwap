@@ -6,7 +6,7 @@
 #    By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/12 18:06:06 by aanouari          #+#    #+#              #
-#    Updated: 2023/04/11 18:25:18 by aanouari         ###   ########.fr        #
+#    Updated: 2023/04/12 21:07:23 by aanouari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,9 @@ COBJS =		$(CSRCS:.c=.o)
 
 all:		$(NAME)
 
-$(NAME):$(OBJS) mandatory/test.o
+$(NAME):$(OBJS) mandatory/main.o
 		@make -C libft/
-		@$(CC) $(CFLAGS) -L libft/ -lft mandatory/test.o $(OBJS) -o $(NAME)
+		@$(CC) $(CFLAGS) -L libft/ -lft mandatory/main.o $(OBJS) -o $(NAME)
 		@printf "$(GREEN)\r SUCCESSFULLY COMPILED!!\n$(NO_COLOR)"
 		
 bonus:	$(OBJS) $(COBJS) bonus/main.o
@@ -52,7 +52,7 @@ bonus:	$(OBJS) $(COBJS) bonus/main.o
 		@printf "$(GREEN)\r BONUS SUCCESSFULLY COMPILED!!\n$(NO_COLOR)"
 
 clean:
-				@$(RM) $(OBJS) $(COBJS) mandatory/test.o bonus/main.o
+				@$(RM) $(OBJS) $(COBJS) mandatory/main.o bonus/main.o
 				@printf "$(BLUE)\r Done Cleaning!!\n$(NO_COLOR)"
 				@make clean -C libft/
 
@@ -64,4 +64,4 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY	:	all clean fclean re bonus
+.PHONY	:		all clean fclean re bonus

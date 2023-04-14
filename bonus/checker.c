@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:28:58 by aanouari          #+#    #+#             */
-/*   Updated: 2023/04/11 19:58:56 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/04/12 21:24:24 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	ft_checker(t_ps *ps, char *pivot)
 				break ;
 		check++;
 	}
+	if (check > 10)
+		ft_kill("Error");
 	behaviour[check](ps, 0);
 }
 
